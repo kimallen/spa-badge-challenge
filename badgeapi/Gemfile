@@ -1,0 +1,17 @@
+source 'https://rubygems.org'
+
+
+gem 'rails', '4.2.5'
+
+gem 'rails-api'
+gem 'pry-rails'
+gem 'spring', :group => :development
+gem 'sprockets-rails'
+gem 'active_model_serializers'
+gem 'rack-cors'
+gem 'pg'
+gem 'faker'
+
+group :development, :test do
+  gem 'byebug'
+end
