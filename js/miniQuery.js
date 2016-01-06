@@ -36,6 +36,7 @@ function miniQuery(selector){
       selector[i].dispatchEvent(event);
     }
   }
+
   selector.ajax = function(options){
     var url = options["url"];
     var type = options["type"];
@@ -61,3 +62,11 @@ function miniQuery(selector){
 var $ = function(selector) {
   return miniQuery(selector)
 }
+
+
+$.ready = function(fn){
+  if ( document.readyState === 'complete' ){
+    return fn()
+  }
+  document.addEventListener( 'DOMContentLoaded', fn, false );
+};

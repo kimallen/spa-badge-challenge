@@ -25,16 +25,45 @@
 
 
 // });
+$.ready(function(){
+  indexLoad();
+  showLoad();
+})
 
 
-var users;
-var theTemplateScript = $("#template-index").html();
-$().ajax({
-  url: "http://localhost:3000/users",
-  type: "GET"
-}).then(function(response){
-  users = JSON.parse(response)
-  debugger
-  Handlebars.compile()
+function indexLoad() {
+  var users;
+
+  var theTemplateScript = $("#template-index")[0].innerHTML;
+
+  var theTemplate = Handlebars.compile(theTemplateScript);
+
+  $().ajax({
+    url: "http://localhost:3000/users",
+    type: "GET"
+  }).then(function(response){
+    data = {users: JSON.parse(response)}
+    $('div.container')[0].innerHTML = theTemplate(data);
+  }).then(function showLoad(){
+  $('li a').on('click', function(e){
+    e.preventDefault();
+    var users;
+    debugger
+    var theTemplateScript = $("#template-index")[0].innerHTML;
+
+    var theTemplate = Handlebars.compile(theTemplateScript);
+
+    $().ajax({
+      url: "http://localhost:3000/users",
+      type: "GET"
+    }).then(function(response){
+      data = {users: JSON.parse(response)}
+      $('div.container')[0].innerHTML = theTemplate(data);
+    })
   })
+}
+  // var theCompiledHtml = theTemplate(users);
+
+function showLoad()
+}
 

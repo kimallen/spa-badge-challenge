@@ -1,9 +1,6 @@
 <!DOCTYPE html>
 <html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
   <link rel="stylesheet" type="text/css" href="css/main.css">
-  <script src="js/miniQuery.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
-  <script src="js/app.js"></script>
   <title>SPABadge</title>
 </head>
 <body>
@@ -12,21 +9,57 @@
       <h1> SPA Badge </h1>
     </div>
 
-
-      <script id="template-index">
+      <script id="template-index" type="text/template">
       <h1> SF Copperheads </h1>
         <ul>
-      {{#each Users}}
-          <li><a href="#">{{name}}</a></li>
+      {{#users}}
+          <li><a href="#" id="{{id}}">{{name}}</a></li>
 
-          <li><a href="sample-page.html">Sample Page</a></li>
-        {{/each}}
+        {{/users}}
         </ul>
       </script>
 
+      <script id="template-show" type="text/template">
 
+      <h1>Words To Be Remembered By</h1>
+    <div class="show-user">
+      <h2> {{name}}"'"s Badges </h2>
 
+      {{#badges}}
+      <div id="1" class="slogan">
+        <div class="body">{{name}}</div>
+        <!-- upvote -->
+        <div class="vote-on">
+          <form action="#">
+            <input type="hidden" name="slogan_id" value=1>
+            <input type="hidden" name="vote_type" value="up">
+            <button class="up" type="submit" name="submit">
+              <img src="img/upvote.gif" alt="upvote_image" />
+            </button>
+          </form>
+        </div>
+        <!-- downvote -->
+        <div class="vote-on">
+          <form action="#">
+            <input type="hidden" name="slogan_id" value=1>
+            <input type="hidden" name="vote_type" value="down">
+            <button class="down" type="submit" name="submit">
+                <img src="img/downvote.gif" alt="downvote_image" />
+            </button>
+          </form>
+        </div>
+
+        <div class="points">
+          {{score}}
+        </div>
+      </div>
+      {{/badges}}
+      </script>
+<!--  -->
   </div>
+  <script src="js/miniQuery.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/2.0.0/handlebars.js"></script>
+<script src="js/app.js"></script>
 </body>
 </html>
 
