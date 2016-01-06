@@ -53,7 +53,6 @@ function showLoad(){
   $('li a').on('click', function(e){
     e.preventDefault();
     var users;
-    console.log()
     var studentId = this.getAttribute('id')
     var theTemplateScript = $("#template-show")[0].innerHTML;
 
