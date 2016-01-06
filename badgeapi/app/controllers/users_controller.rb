@@ -8,7 +8,7 @@ class UsersController < ApplicationController
 
   def show
     @badges = @user.badges
-    render json: [@user, @badges]
+    render json: {user: @user, badges: @badges}
   end
 
   def create
